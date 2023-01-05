@@ -39,6 +39,12 @@ app.post('/turtles', (req, res) => {
     res.json(turtles)
 })
 
+// Update Route
+app.put("/turtles/:index", (req, res) => {
+    turtles[req.params.index] = req.body
+    res.json(turtles)
+})
+
 
 // turn server on
 app.listen(3005, () => {
