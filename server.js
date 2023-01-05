@@ -24,13 +24,21 @@ app.get('/', (req, res) => {
     })
 })
 
-// send all turtles
+// Index Route
 app.get('/turtles', (req, res) => {
     res.json(turtles)
 })
 
-app.get('/turtles/:index', (req, res) => {
-    res.json(turtles[req.params.index])
+// Delete Route
+app.delete('/turtles/:index', (req, res) => {
+    turtles.splice([req.params.index], 1)
+    res.json(turtles)
+})
+
+// Update Route
+app.put("/turtles/:index", (req, res) => {
+    turtles[req.params.index] = req.body
+    res.json(turtles)
 })
 
 // Create Route
@@ -39,10 +47,9 @@ app.post('/turtles', (req, res) => {
     res.json(turtles)
 })
 
-// Update Route
-app.put("/turtles/:index", (req, res) => {
-    turtles[req.params.index] = req.body
-    res.json(turtles)
+// Show Route
+app.get('/turtles/:index', (req, res) => {
+    res.json(turtles[req.params.index])
 })
 
 
